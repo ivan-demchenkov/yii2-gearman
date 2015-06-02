@@ -1,5 +1,5 @@
 <?php
-namespace shakura\yii2\gearman;
+namespace apollo\yii2\gearman;
 
 interface BootstrapInterface
 {

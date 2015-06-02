@@ -1,10 +1,11 @@
 <?php
 
-namespace shakura\yii2\gearman;
+namespace apollo\yii2\gearman;
 
 abstract class JobBase extends \yii\base\Component implements JobInterface
 {
     protected $name;
+    public $count=1;
     
     /**
      * @return string
