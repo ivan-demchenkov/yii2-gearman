@@ -1,5 +1,5 @@
 <?php
-namespace apollo\yii2\gearman;
+namespace totaldev\yii2\gearman;
 
 use Psr\Log\LoggerInterface;
 

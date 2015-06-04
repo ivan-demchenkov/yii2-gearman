@@ -1,18 +1,24 @@
 {
-    "name": "apollo/yii2-gearman",
+    "name": "totaldev/yii2-gearman",
     "description": "Gearman handler for PHP (fork)",
-    "keywords": ["yii", "extension"],
-    "homepage": "https://github.com/vov4ik08/yii2-gearman",
+    "keywords": ["gearman", "queue", "worker", "parallel", "multi"],
+    "homepage": "https://github.com/totaldev/yii2-gearman",
     "type": "yii2-extension",
     "license": "MIT",
     "support": {
-        "email": "vov4ik08@gmail.com",
-        "source": "https://github.com/vov4ik08/yii2-gearman"
+        "source": "https://github.com/totaldev/yii2-gearman"
     },
     "authors": [
         {
+          "name": "Waclaw Shakura",
+          "email": "waclaw@shakura.ru"
+        },
+        {
             "name": "Vladimir Boiko",
             "email": "vov4ik08@gmail.com"
+        },
+        {
+          "name": "Kovalenko Vadim"
         }
     ],
     "require": {
@@ -29,7 +35,7 @@
     },
     "autoload": {
         "psr-4": {
-          "apollo\\yii2\\gearman\\": ""
+          "totaldev\\yii2\\gearman\\": ""
         }
     }
 }

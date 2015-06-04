@@ -1,6 +1,6 @@
 <?php
 
-namespace apollo\yii2\gearman;
+namespace totaldev\yii2\gearman;
 
 abstract class JobBase extends \yii\base\Component implements JobInterface
 {
