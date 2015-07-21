@@ -4,7 +4,7 @@ namespace totaldev\yii2\gearman;
 use GearmanException;
 use GearmanClient;
 use Psr\Log\LoggerInterface;
-use totaldev\yii2\gearman\ServerConnectionException;
+use totaldev\yii2\gearman\exception\ServerConnectionException;
 
 class Client
 {

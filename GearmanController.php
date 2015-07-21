@@ -5,8 +5,6 @@ namespace totaldev\yii2\gearman;
 use Yii;
 use yii\console\Controller;
 use yii\helpers\Console;
-use totaldev\yii2\gearman\Process;
-use totaldev\yii2\gearman\Application;
 
 class GearmanController extends Controller
 {
@@ -17,6 +15,9 @@ class GearmanController extends Controller
 
     public $gearmanComponent = 'gearman';
 
+    public function actionIndex() {
+        $this->run('/help', ['gearman']);
+    }
 
     public function actionStart()
     {
@@ -69,8 +70,7 @@ class GearmanController extends Controller
 
     protected function runApplication(Application $app)
     {
-        $fork = (bool)$this->fork;
-        if ($fork) {
+        if ($this->fork) {
             $this->stdout("Success: Process is started\n", Console::FG_GREEN);
         } else {
             $this->stdout("Success: Process is started, but not daemonized\n", Console::FG_YELLOW);

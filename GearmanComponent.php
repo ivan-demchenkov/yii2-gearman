@@ -3,10 +3,6 @@
 namespace totaldev\yii2\gearman;
 
 use Yii;
-use totaldev\yii2\gearman\Application;
-use totaldev\yii2\gearman\Dispatcher;
-use totaldev\yii2\gearman\Config;
-use totaldev\yii2\gearman\Process;
 
 class GearmanComponent extends \yii\base\Component
 {
@@ -36,11 +32,15 @@ class GearmanComponent extends \yii\base\Component
 
                 $job->setName($name);
                 for ($i = 0; $i < $job->count; $i++) {
-
                     $this->_process = null;
-                    $application = new Application($name.$i, $this->getConfig(), $this->getProcess($name.$i));
+                    $application    = new Application(
+                        $name.$i,
+                        $this->getConfig(),
+                        $this->getProcess($name.$i),
+                        \Yii::getLogger()
+                    );
                     $application->add($job);
-                    $app[]=$application;
+                    $app[] = $application;
                 }
             }
             $this->_application = $app;

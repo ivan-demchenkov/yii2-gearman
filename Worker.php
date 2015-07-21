@@ -1,7 +1,6 @@
 <?php
 namespace totaldev\yii2\gearman;
 
-use Serializable;
 use GearmanException;
 use GearmanWorker;
 use Psr\Log\LoggerInterface;

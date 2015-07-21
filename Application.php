@@ -8,11 +8,10 @@ use Psr\Log\LoggerInterface;
 use React\EventLoop\Factory as Loop;
 use React\EventLoop\LibEventLoop;
 use React\EventLoop\StreamSelectLoop;
-use Serializable;
 use totaldev\yii2\gearman\exception\InvalidBootstrapClassException;
+use yii\log\Logger;
 
-class Application
-{
+class Application {
     /**
      * @var Config
      */
@@ -76,7 +75,6 @@ class Application
 
     /**
      * gets the instance via lazy initialization (created on first usage)
-     *
      * @return self
      */
     public static function getInstance()
@@ -186,6 +184,7 @@ class Application
         }
 
         $this->changeUser();
+        cli_set_process_title('php worker '.$this->workerId);
 
         if ($fork) {
             $pid = pcntl_fork();
@@ -273,6 +272,11 @@ class Application
         }
 
         while ($worker->work() || $worker->returnCode() == GEARMAN_TIMEOUT) {
+            // @todo find statuses when queue is empty
+            if(1 || $worker->returnCode() === GEARMAN_NO_JOBS) {
+                usleep(100000);
+            }
+
             if ($this->getKill()) {
                 break;
             }
@@ -339,6 +343,7 @@ class Application
         $this->jobs[] = $job;
         $root = $this;
         if(!$job->init()){
+            \Yii::getLogger()->log('Can\'t start worker', Logger::LEVEL_WARNING);
             die();
         }
         $worker->addFunction($job->getName(), function (\GearmanJob $gearmanJob) use ($root, $job) {
