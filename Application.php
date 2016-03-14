@@ -263,7 +263,9 @@ class Application {
     private function createLoop($restart = false)
     {
         $worker = $this->getWorker()->getWorker();
-        $worker->setTimeout(10);
+        $timeout = intval($this->getConfig()->getTimeout());
+
+        $worker->setTimeout($timeout);
 
         $callbacks = $this->getCallbacks();
 

@@ -39,7 +39,12 @@ class Config implements Serializable
      * @var string
      */
     private $user;
-
+    
+    /**
+     * @var string
+     */
+    private $timeout;
+    
     /**
      * @var array
      */
@@ -117,6 +122,9 @@ class Config implements Serializable
                     case 'user':
                         $this->setUser($value);
                         break;
+                    case 'timeout':
+                        $this->setTimeout($value);
+                        break;
                 }
             }
         }
@@ -156,6 +164,9 @@ class Config implements Serializable
                 break;
             case 'user':
                 return $this->getUser();
+                break;
+            case 'timeout':
+                return $this->getTimeout();
                 break;
         }
         return null;
@@ -343,6 +354,24 @@ class Config implements Serializable
     {
         return $this->user;
     }
+    
+        /**
+     * @param string $user
+     * @return $this
+     */
+    public function setTimeout($timeout)
+    {
+        $this->timeout = $timeout;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTimeout()
+    {
+        return $this->timeout;
+    }
 
     /**
      * @return string
@@ -356,6 +385,7 @@ class Config implements Serializable
             'workerLifetime' => $this->getWorkerLifetime(),
             'autoUpdate' => $this->getAutoUpdate(),
             'user' => $this->getUser(),
+            'timeout' => $this->getTimeout(),
             'envVariables' => $this->getEnvVariables()
         ]);
     }
