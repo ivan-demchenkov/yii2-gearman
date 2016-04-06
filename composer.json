@@ -1,12 +1,12 @@
 {
-    "name": "totaldev/yii2-gearman",
+    "name": "ivan-demchenkov/yii2-gearman",
     "description": "Gearman handler for PHP (fork)",
     "keywords": ["gearman", "queue", "worker", "parallel", "multi"],
-    "homepage": "https://github.com/totaldev/yii2-gearman",
+    "homepage": "https://github.com/ivan-demchenkov/yii2-gearman",
     "type": "yii2-extension",
     "license": "MIT",
     "support": {
-        "source": "https://github.com/totaldev/yii2-gearman"
+        "source": "https://github.com/ivan-demchenkov/yii2-gearman"
     },
     "authors": [
         {
